@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Backups\\Calculator\\Calculator\\Calculator.csproj": {}
+    "C:\\Users\\stefa\\source\\repos\\calc\\Calculator\\Calculator.csproj": {}
   },
   "projects": {
-    "D:\\Backups\\Calculator\\Calculator\\Calculator.csproj": {
+    "C:\\Users\\stefa\\source\\repos\\calc\\Calculator\\Calculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Backups\\Calculator\\Calculator\\Calculator.csproj",
+        "projectUniqueName": "C:\\Users\\stefa\\source\\repos\\calc\\Calculator\\Calculator.csproj",
         "projectName": "Calculator",
-        "projectPath": "D:\\Backups\\Calculator\\Calculator\\Calculator.csproj",
+        "projectPath": "C:\\Users\\stefa\\source\\repos\\calc\\Calculator\\Calculator.csproj",
         "packagesPath": "C:\\Users\\stefa\\.nuget\\packages\\",
-        "outputPath": "D:\\Backups\\Calculator\\Calculator\\obj\\",
+        "outputPath": "C:\\Users\\stefa\\source\\repos\\calc\\Calculator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\stefa\\AppData\\Roaming\\NuGet\\NuGet.Config",

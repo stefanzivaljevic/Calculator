@@ -286,7 +286,7 @@ namespace Calculator
 
         private void button18_Click(object sender, EventArgs e)         //dugme "⇚"
         {
-            if (_isWordFormat == true)           //ukoliko su ispisane reci, pozvati dugme "C"
+            if (_isWordFormat == true || textBox1.Text.Any(char.IsLetter))           //ukoliko su ispisane reci, pozvati dugme "C"
             {
                 button14_Click(sender, e);
                 _isWordFormat = false;
