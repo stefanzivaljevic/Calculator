@@ -253,7 +253,7 @@
             this.button17.Size = new System.Drawing.Size(62, 51);
             this.button17.TabIndex = 1;
             this.button17.TabStop = false;
-            this.button17.Text = "*";
+            this.button17.Text = "x";
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
@@ -275,7 +275,7 @@
             this.button19.Size = new System.Drawing.Size(62, 51);
             this.button19.TabIndex = 1;
             this.button19.TabStop = false;
-            this.button19.Text = "/";
+            this.button19.Text = "÷";
             this.button19.UseVisualStyleBackColor = true;
             this.button19.Click += new System.EventHandler(this.button19_Click);
             // 

@@ -342,7 +342,7 @@ namespace Calculator
             _operation = "-";
         }
 
-        private void button17_Click(object sender, EventArgs e)     //dugme "*"
+        private void button17_Click(object sender, EventArgs e)     //dugme "x"
         {
             if (_isWordFormat == true)
             {
@@ -355,7 +355,7 @@ namespace Calculator
             button_Click(sender, e);
         }
 
-        private void button19_Click(object sender, EventArgs e)
+        private void button19_Click(object sender, EventArgs e)     //dugme "÷"
         {
             if (_isWordFormat == true)
             {
