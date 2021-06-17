@@ -19,7 +19,7 @@ namespace Calculator
         private double _secondNumber = 0;    //polje koje cuva drugi broj prilikom operacija
         private double _result = -1;         //polje koje cuva rezultat operacija
         private string _operation = "";      //polje koje ukazuje koja se operacija izvodi
-        private bool _resetOutput = false;   //polje koje nam govori da li se unos ponovo pokrece ili ne
+        private bool _resetOutput = true;   //polje koje nam govori da li se unos ponovo pokrece ili ne
 
         private readonly NumberWordConverter _converter;
 
@@ -34,197 +34,144 @@ namespace Calculator
             textBox1.Text = "0";
         }
 
-        private void button2_Click(object sender, EventArgs e)      //taster "0"
+        private void numbersButtons_Click(string number)
         {
-            if(textBox1.Text.Length < 16)
-            {
-                if (textBox1.Text != "0")
-                {
-                    textBox1.Text += "0";
-                }
-                if (_resetOutput == true)
-                {
-                    textBox1.Text = "0";
-                    _resetOutput = false;
-                }
-                _isFirstCall = true;
-            }
-            button_Click(sender, e);
-        }
-        private void button8_Click(object sender, EventArgs e)      //taster "1"
-        {
-            if(textBox1.Text.Length < 16 || textBox1.Text.Any(char.IsLetter))   //najveci broj koji korisnik moze da unese mora biti manji/veci od ±10 bilijardi; u polju se moze naci vise od 16 karaktera prilikom ispisivanja brojeva recima, te proveravamo da li su u textbox-u slova
+            if (textBox1.Text.Length < 16 || textBox1.Text.Any(char.IsLetter))
             {
                 if (textBox1.Text == "0" || _resetOutput == true)
                 {
-                    textBox1.Text = "1";
+                    switch (number)
+                    {
+                        case "0":
+                            textBox1.Text = "0";
+                            break;
+                        case "1":
+                            textBox1.Text = "1";
+                            break;
+                        case "2":
+                            textBox1.Text = "2";
+                            break;
+                        case "3":
+                            textBox1.Text = "3";
+                            break;
+                        case "4":
+                            textBox1.Text = "4";
+                            break;
+                        case "5":
+                            textBox1.Text = "5";
+                            break;
+                        case "6":
+                            textBox1.Text = "6";
+                            break;
+                        case "7":
+                            textBox1.Text = "7";
+                            break;
+                        case "8":
+                            textBox1.Text = "8";
+                            break;
+                        case "9":
+                            textBox1.Text = "9";
+                            break;
+                    }
                     _resetOutput = false;
                 }
                 else
                 {
-                    textBox1.Text += "1";
+                    switch (number)
+                    {
+                        case "0":
+                            textBox1.Text += "0";
+                            break;
+                        case "1":
+                            textBox1.Text += "1";
+                            break;
+                        case "2":
+                            textBox1.Text += "2";
+                            break;
+                        case "3":
+                            textBox1.Text += "3";
+                            break;
+                        case "4":
+                            textBox1.Text += "4";
+                            break;
+                        case "5":
+                            textBox1.Text += "5";
+                            break;
+                        case "6":
+                            textBox1.Text += "6";
+                            break;
+                        case "7":
+                            textBox1.Text += "7";
+                            break;
+                        case "8":
+                            textBox1.Text += "8";
+                            break;
+                        case "9":
+                            textBox1.Text += "9";
+                            break;
+                    }
                 }
                 
                 _isFirstCall = true;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)      //taster "0"
+        {
+            numbersButtons_Click("0");
+            button_Click(sender, e);
+        }
+        private void button8_Click(object sender, EventArgs e)      //taster "1"
+        {
+            numbersButtons_Click("1");
             button_Click(sender, e);
         }
 
         private void button7_Click(object sender, EventArgs e)      //taster "2"
         {
-            if(textBox1.Text.Length < 16 || textBox1.Text.Any(char.IsLetter))   //najveci broj koji korisnik moze da unese mora biti manji/veci od ±10 bilijardi; u polju se moze naci vise od 16 karaktera prilikom ispisivanja brojeva recima, te proveravamo da li su u textbox-u slova
-            {
-                if (textBox1.Text == "0" || _resetOutput == true)
-                {
-                    textBox1.Text = "2";
-                    _resetOutput = false;
-                }
-                else
-                {
-                    textBox1.Text += "2";
-
-                }
-                
-                _isFirstCall = true;
-            }
+            numbersButtons_Click("2");
             button_Click(sender, e);
         }
 
         private void button5_Click(object sender, EventArgs e)      //taster "3"
         {
-            if(textBox1.Text.Length < 16 || textBox1.Text.Any(char.IsLetter))   //najveci broj koji korisnik moze da unese mora biti manji/veci od ±10 bilijardi; u polju se moze naci vise od 16 karaktera prilikom ispisivanja brojeva recima, te proveravamo da li su u textbox-u slova
-            {
-                if (textBox1.Text == "0" || _resetOutput == true)
-                {
-                    textBox1.Text = "3";
-                    _resetOutput = false;
-                }
-                else
-                {
-                    textBox1.Text += "3";
-                }
-                
-                _isFirstCall = true;
-            }
+            numbersButtons_Click("3");
             button_Click(sender, e);
         }
 
         private void button12_Click(object sender, EventArgs e)     //taster "4"
         {
-            if(textBox1.Text.Length < 16 || textBox1.Text.Any(char.IsLetter))   //najveci broj koji korisnik moze da unese mora biti manji/veci od ±10 bilijardi; u polju se moze naci vise od 16 karaktera prilikom ispisivanja brojeva recima, te proveravamo da li su u textbox-u slova
-            {
-                if (textBox1.Text == "0" || _resetOutput == true)
-                {
-                    textBox1.Text = "4";
-                    _resetOutput = false;
-                }
-                else
-                {
-                    textBox1.Text += "4";
-
-                }
-                
-                _isFirstCall = true;
-            }
+            numbersButtons_Click("4");
             button_Click(sender, e);
         }
 
         private void button11_Click(object sender, EventArgs e)     //taster "5"
         {
-            if(textBox1.Text.Length < 16 || textBox1.Text.Any(char.IsLetter))   //najveci broj koji korisnik moze da unese mora biti manji/veci od ±10 bilijardi; u polju se moze naci vise od 16 karaktera prilikom ispisivanja brojeva recima, te proveravamo da li su u textbox-u slova
-            {
-                if (textBox1.Text == "0" || _resetOutput == true)
-                {
-                    textBox1.Text = "5";
-                    _resetOutput = false;
-                }
-                else
-                {
-                    textBox1.Text += "5";
-
-                }
-                
-                _isFirstCall = true;
-            }
+            numbersButtons_Click("5");
             button_Click(sender, e);
         }
 
         private void button9_Click(object sender, EventArgs e)      //taster "6"
         {
-            if(textBox1.Text.Length < 16 || textBox1.Text.Any(char.IsLetter))   //najveci broj koji korisnik moze da unese mora biti manji/veci od ±10 bilijardi; u polju se moze naci vise od 16 karaktera prilikom ispisivanja brojeva recima, te proveravamo da li su u textbox-u slova
-            {
-                if (textBox1.Text == "0" || _resetOutput == true)
-                {
-                    textBox1.Text = "6";
-                    _resetOutput = false;
-                }
-                else
-                {
-                    textBox1.Text += "6";
-
-                }
-                
-                _isFirstCall = true;
-            }
+            numbersButtons_Click("6");
             button_Click(sender, e);
         }
 
         private void button16_Click(object sender, EventArgs e)     //taster "7"
         {
-            if(textBox1.Text.Length < 16 || textBox1.Text.Any(char.IsLetter))   //najveci broj koji korisnik moze da unese mora biti manji/veci od ±10 bilijardi; u polju se moze naci vise od 16 karaktera prilikom ispisivanja brojeva recima, te proveravamo da li su u textbox-u slova
-            {
-                if (textBox1.Text == "0" || _resetOutput == true)
-                {
-                    textBox1.Text = "7";
-                    _resetOutput = false;
-                }
-                else
-                {
-                    textBox1.Text += "7";
-
-                }
-                
-                _isFirstCall = true;
-            }
+            numbersButtons_Click("7");
             button_Click(sender, e);
         }
 
         private void button15_Click(object sender, EventArgs e)     //taster "8"
         {
-            if(textBox1.Text.Length < 16 || textBox1.Text.Any(char.IsLetter))   //najveci broj koji korisnik moze da unese mora biti manji/veci od ±10 bilijardi; u polju se moze naci vise od 16 karaktera prilikom ispisivanja brojeva recima, te proveravamo da li su u textbox-u slova
-            {
-                if (textBox1.Text == "0" || _resetOutput == true)
-                {
-                    textBox1.Text = "8";
-                    _resetOutput = false;
-                }
-                else
-                {
-                    textBox1.Text += "8";
-
-                }
-                
-                _isFirstCall = true;
-            }
+            numbersButtons_Click("8");
             button_Click(sender, e);
         }
 
         private void button13_Click(object sender, EventArgs e)     //taster "9"
         {
-            if (textBox1.Text.Length < 16 || textBox1.Text.Any(char.IsLetter))  //najveci broj koji korisnik moze da unese mora biti manji/veci od ±10 bilijardi; u polju se moze naci vise od 16 karaktera prilikom ispisivanja brojeva recima, te proveravamo da li su u textbox-u slova
-            {
-                if (textBox1.Text == "0" || _resetOutput == true)
-                {
-                    textBox1.Text = "9";
-                    _resetOutput = false;
-                }
-                else
-                {
-                    textBox1.Text += "9";
-                }
-                
-                _isFirstCall = true;
-            }
+            numbersButtons_Click("9");
             button_Click(sender, e);
         }
 
@@ -274,7 +221,7 @@ namespace Calculator
 
         private void button6_Click(object sender, EventArgs e)      //taster "+"
         {
-            if(textBox1.Text.Any(char.IsLetter) == true)           //ukoliko su ispisane reci...
+            if(textBox1.Text.Any(char.IsLetter))           //ukoliko su ispisane reci...
             {
                 textBox1.Text = _lastInput;      //...za operaciju iskoristiti poslednji unos.
                 
@@ -286,7 +233,7 @@ namespace Calculator
 
         private void button10_Click(object sender, EventArgs e)     //taster "-"
         {
-            if(textBox1.Text.Any(char.IsLetter) == true)           //ukoliko su ispisane reci...
+            if(textBox1.Text.Any(char.IsLetter))           //ukoliko su ispisane reci...
             {
                 textBox1.Text = _lastInput;      //...za operaciju iskoristiti poslednji unos.
                 
@@ -297,7 +244,7 @@ namespace Calculator
 
         private void button17_Click(object sender, EventArgs e)     //taster "x"
         {
-            if(textBox1.Text.Any(char.IsLetter) == true)
+            if(textBox1.Text.Any(char.IsLetter))
             {
                 textBox1.Text = _lastInput;
                 
@@ -310,7 +257,7 @@ namespace Calculator
 
         private void button19_Click(object sender, EventArgs e)     //taster "÷"
         {
-            if(textBox1.Text.Any(char.IsLetter) == true)
+            if(textBox1.Text.Any(char.IsLetter))
             {
                 textBox1.Text = _lastInput;
                 
@@ -529,7 +476,7 @@ namespace Calculator
 
         private void button_Click(object sender, EventArgs e)       //taster koji pozivaju svi tasteri prilikom klika
         {
-            if(sender == button20)              //ukoliko kliknemo na taster za konverziju brojeva u slova, smanjujemo font na 10
+            if (sender == button20)              //ukoliko kliknemo na taster za konverziju brojeva u slova, smanjujemo font na 10
             {
                 textBox1.Font = new Font("Consolas", 10, FontStyle.Bold);
             }
