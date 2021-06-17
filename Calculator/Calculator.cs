@@ -34,7 +34,7 @@ namespace Calculator
             textBox1.Text = "0";
         }
 
-        private void numbersButtons_Click(string number)
+        private void numberButton_Click(string number)
         {
             if (textBox1.Text.Length < 16 || textBox1.Text.Any(char.IsLetter))
             {
@@ -118,60 +118,60 @@ namespace Calculator
 
         private void button2_Click(object sender, EventArgs e)      //taster "0"
         {
-            numbersButtons_Click("0");
+            numberButton_Click("0");
             button_Click(sender, e);
         }
         private void button8_Click(object sender, EventArgs e)      //taster "1"
         {
-            numbersButtons_Click("1");
+            numberButton_Click("1");
             button_Click(sender, e);
         }
 
         private void button7_Click(object sender, EventArgs e)      //taster "2"
         {
-            numbersButtons_Click("2");
+            numberButton_Click("2");
             button_Click(sender, e);
         }
 
         private void button5_Click(object sender, EventArgs e)      //taster "3"
         {
-            numbersButtons_Click("3");
+            numberButton_Click("3");
             button_Click(sender, e);
         }
 
         private void button12_Click(object sender, EventArgs e)     //taster "4"
         {
-            numbersButtons_Click("4");
+            numberButton_Click("4");
             button_Click(sender, e);
         }
 
         private void button11_Click(object sender, EventArgs e)     //taster "5"
         {
-            numbersButtons_Click("5");
+            numberButton_Click("5");
             button_Click(sender, e);
         }
 
         private void button9_Click(object sender, EventArgs e)      //taster "6"
         {
-            numbersButtons_Click("6");
+            numberButton_Click("6");
             button_Click(sender, e);
         }
 
         private void button16_Click(object sender, EventArgs e)     //taster "7"
         {
-            numbersButtons_Click("7");
+            numberButton_Click("7");
             button_Click(sender, e);
         }
 
         private void button15_Click(object sender, EventArgs e)     //taster "8"
         {
-            numbersButtons_Click("8");
+            numberButton_Click("8");
             button_Click(sender, e);
         }
 
         private void button13_Click(object sender, EventArgs e)     //taster "9"
         {
-            numbersButtons_Click("9");
+            numberButton_Click("9");
             button_Click(sender, e);
         }
 
@@ -221,11 +221,6 @@ namespace Calculator
 
         private void button6_Click(object sender, EventArgs e)      //taster "+"
         {
-            if(textBox1.Text.Any(char.IsLetter))           //ukoliko su ispisane reci...
-            {
-                textBox1.Text = _lastInput;      //...za operaciju iskoristiti poslednji unos.
-                
-            }
             button3_Click(sender, e);           //pozivanje operacije "="
             _operation = "+";
             button_Click(sender, e);
@@ -233,22 +228,14 @@ namespace Calculator
 
         private void button10_Click(object sender, EventArgs e)     //taster "-"
         {
-            if(textBox1.Text.Any(char.IsLetter))           //ukoliko su ispisane reci...
-            {
-                textBox1.Text = _lastInput;      //...za operaciju iskoristiti poslednji unos.
-                
-            }
             button3_Click(sender, e);           //pozivanje operacije "="
             _operation = "-";
+
+            button_Click(sender, e);
         }
 
         private void button17_Click(object sender, EventArgs e)     //taster "x"
         {
-            if(textBox1.Text.Any(char.IsLetter))
-            {
-                textBox1.Text = _lastInput;
-                
-            }
             button3_Click(sender, e);
             _operation = "*";
 
@@ -257,11 +244,6 @@ namespace Calculator
 
         private void button19_Click(object sender, EventArgs e)     //taster "÷"
         {
-            if(textBox1.Text.Any(char.IsLetter))
-            {
-                textBox1.Text = _lastInput;
-                
-            }
             button3_Click(sender, e);
             _operation = "/";
 
@@ -270,7 +252,7 @@ namespace Calculator
 
         private void button3_Click(object sender, EventArgs e)      //taster "="
         {
-            if(textBox1.Text.Any(char.IsLetter) == true)           //ukoliko su ispisane reci...
+            if(textBox1.Text.Any(char.IsLetter))           //ukoliko su ispisane reci...
             {
                 textBox1.Text = _lastInput;      //...za operaciju iskoristiti poslednji unos.
                 
@@ -287,21 +269,21 @@ namespace Calculator
                 if (_isFirstCall)                
                 {
                     _secondNumber = Convert.ToDouble(textBox1.Text);
-                    if (_operation == "+")
+
+                    switch (_operation)
                     {
-                        _result = _firstNumber + _secondNumber;
-                    }
-                    if (_operation == "-")
-                    {
-                        _result = _firstNumber - _secondNumber;
-                    }
-                    if (_operation == "*")
-                    {
-                        _result = _firstNumber * _secondNumber;
-                    }
-                    if (_operation == "/")
-                    {
-                        _result = _firstNumber / _secondNumber;
+                        case "+":
+                            _result = _firstNumber + _secondNumber;
+                            break;
+                        case "-":
+                            _result = _firstNumber - _secondNumber;
+                            break;
+                        case "*":
+                            _result = _firstNumber * _secondNumber;
+                            break;
+                        case "/":
+                            _result = _firstNumber / _secondNumber;
+                            break;
                     }
 
                     if(_result % 1 != 0)                     //ukoliko je rezultat decimalni zapis...
@@ -321,7 +303,9 @@ namespace Calculator
 
         private void button1_Click(object sender, EventArgs e)      //taster "±"
         {
-            if(textBox1.Text.Any(char.IsLetter) == true)            //ukoliko su prikazane reci
+
+
+            if(textBox1.Text.Any(char.IsLetter))                     //ukoliko su prikazane reci
             {
                 if(Convert.ToDouble(_lastInput) < 0)                 //ukoliko je poslednji unos negativan
                 {
@@ -336,17 +320,12 @@ namespace Calculator
                 {
                     button14_Click(sender, e);                      //...pozivamo dugme "C"
                 }
-                else
-                {
-                    
-                }
             }
             else
             {
                 if (Convert.ToDouble(textBox1.Text) > 0)            //ukoliko je trenutni unos veci od 0...
                 {
-                    textBox1.Text = textBox1.Text.Insert(0, "-");   //...dodajemo "-" 
-
+                    textBox1.Text = "-" + textBox1.Text;            //...dodajemo "-" 
                 }
                 else
                 {
@@ -366,24 +345,15 @@ namespace Calculator
 
         private void button4_Click(object sender, EventArgs e)      //taster "."
         {
-            if (!textBox1.Text.Contains('.') )
+            if(!textBox1.Text.Contains('.') && !_resetOutput)
             {
-                if(_resetOutput == false)
-                {
-                    textBox1.Text += ".";
-                }
-                else
-                {
-                    textBox1.Text = "0.";
-                }
+                textBox1.Text += ".";
             }
             else
             {
-                if(_resetOutput == true)
-                {
-                    textBox1.Text = "0.";
-                }
+                textBox1.Text = "0.";
             }
+
             _resetOutput = false;
 
             button_Click(sender, e);
@@ -393,7 +363,7 @@ namespace Calculator
         {
             if (textBox1.Text.Any(char.IsDigit))        //ukoliko su prikazani brojevi
             {
-                _lastInput = textBox1.Text;              //cuvamo trenutnu vrednost 
+                _lastInput = textBox1.Text;              //cuvamo trenutnu vrednost kao "poslednji unos"
             }
 
             if(textBox1.Text.Any(char.IsLetter))         //ukoliko su prikazane reci...
@@ -422,10 +392,9 @@ namespace Calculator
 
         private void button22_Click(object sender, EventArgs e)     //taster "x²"
         {
-            if(textBox1.Text.Any(char.IsLetter) == true)                               //ukoliko su prikazane reci
+            if(textBox1.Text.Any(char.IsLetter))                    //ukoliko su prikazane reci
             {
-                _result = Math.Pow(Convert.ToDouble(_lastInput), 2);
-                
+                _result = Math.Pow(Convert.ToDouble(_lastInput), 2);                
             }
             else
             {
@@ -437,7 +406,6 @@ namespace Calculator
                 {
                     _secondNumber = Convert.ToDouble(textBox1.Text);
                     _result = Math.Pow(_secondNumber, 2);
-                    
                 }
             }
             textBox1.Text = _result.ToString();
@@ -447,16 +415,14 @@ namespace Calculator
 
         private void button24_Click(object sender, EventArgs e)     //taster "√"
         {
-            if(textBox1.Text.Any(char.IsLetter) == true)
+            if(textBox1.Text.Any(char.IsLetter))
             {
-                _result = Math.Sqrt(Convert.ToDouble(_lastInput));
-                
+                _result = Math.Sqrt(Convert.ToDouble(_lastInput));                
             }
             else
             {
                 if (_firstNumber == 0)
                 {
-                    
                     _result = Math.Sqrt(Convert.ToDouble(textBox1.Text));
                 }
                 else
@@ -476,15 +442,17 @@ namespace Calculator
 
         private void button_Click(object sender, EventArgs e)       //taster koji pozivaju svi tasteri prilikom klika
         {
-            if (sender == button20)              //ukoliko kliknemo na taster za konverziju brojeva u slova, smanjujemo font na 10
+            if(sender != button20)
             {
-                textBox1.Font = new Font("Consolas", 10, FontStyle.Bold);
+                if (textBox1.Font.Size == 10)
+                {
+                    textBox1.Font = new Font("Consolas", 18, FontStyle.Bold);
+                }
             }
             else
             {
-                textBox1.Font = new Font("Consolas", 18, FontStyle.Bold);
+                textBox1.Font = new Font("Consolas", 10, FontStyle.Bold);   //ukoliko kliknemo na taster za konverziju brojeva u slova, smanjujemo font na 10
             }
-        }   
-
+        }
     }
 }

@@ -2,59 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Calculator.Models;
 
 namespace Calculator
 {
     public class NumberWordConverter
     {
-        private readonly SortedList _upTo20;          //lista brojeva do 20
-        private readonly SortedList _dozens;          //lista desetina
-        private readonly SortedList _hundreds;        //lista stotina
+        private readonly UpTo20 _upTo20;        //lista brojeva do 20
+        private readonly Dozens _dozens;        //lista desetina
+        private readonly Hundreds _hundreds;    //lista stotina
 
-        public NumberWordConverter()
+        public NumberWordConverter(UpTo20 upTo20, Dozens dozens, Hundreds hundreds)
         {
-            _upTo20 = new SortedList();
-            _dozens = new SortedList();
-            _hundreds = new SortedList();
-
-            _upTo20.Add(1, "jedan");
-            _upTo20.Add(2, "dva");
-            _upTo20.Add(3, "tri");
-            _upTo20.Add(4, "četiri");
-            _upTo20.Add(5, "pet");
-            _upTo20.Add(6, "šest");
-            _upTo20.Add(7, "sedam");
-            _upTo20.Add(8, "osam");
-            _upTo20.Add(9, "devet");
-            _upTo20.Add(10, "deset");
-            _upTo20.Add(11, "jedanaest");
-            _upTo20.Add(12, "dvanaest");
-            _upTo20.Add(13, "trinaest");
-            _upTo20.Add(14, "četrnaest");
-            _upTo20.Add(15, "petnaest");
-            _upTo20.Add(16, "šesnaest");
-            _upTo20.Add(17, "sedamnaest");
-            _upTo20.Add(18, "osamnaest");
-            _upTo20.Add(19, "devetnaest");
-
-            _dozens.Add(2, "dvadeset");
-            _dozens.Add(3, "trideset");
-            _dozens.Add(4, "četrdeset");
-            _dozens.Add(5, "pedeset");
-            _dozens.Add(6, "šezdeset");
-            _dozens.Add(7, "sedamdeset");
-            _dozens.Add(8, "osamdeset");
-            _dozens.Add(9, "devedeset");
-
-            _hundreds.Add(1, "sto");
-            _hundreds.Add(2, "dvesta");
-            _hundreds.Add(3, "trista");
-            _hundreds.Add(4, "četiristo");
-            _hundreds.Add(5, "petsto");
-            _hundreds.Add(6, "šeststo");
-            _hundreds.Add(7, "sedamsto");
-            _hundreds.Add(8, "osamsto");
-            _hundreds.Add(9, "devetsto");
+            _upTo20 = upTo20;
+            _dozens = dozens;
+            _hundreds = hundreds;
         }
 
         public string Convert(double number)
@@ -235,7 +197,7 @@ namespace Calculator
                         if (Math.Floor(number / 100) > 0)                           //ukoliko je unos reda velicine stotina
                         {
                             double tempNumber = Math.Floor(number / 100);
-                            foreach (DictionaryEntry n in _hundreds)                 //prolazimo kroz listu naziva za stotine i pronalazimo odgovarajuci naziv za unetu stotinu
+                            foreach (DictionaryEntry n in _hundreds.HundredsList)                 //prolazimo kroz listu naziva za stotine i pronalazimo odgovarajuci naziv za unetu stotinu
                             {
                                 if (int.Parse(n.Key.ToString()) == tempNumber)
                                 {
@@ -251,7 +213,7 @@ namespace Calculator
                             if (number < 20)                                        //ukoliko je unos manji od 20
                             {
                                 double tempNumber = Math.Floor(number);
-                                foreach (DictionaryEntry n in _upTo20)               //prolazimo kroz listu naziva za brojeve do 20 i pronalazimo odgovarajuci naziv za uneti broj
+                                foreach (DictionaryEntry n in _upTo20.UpTo20List)               //prolazimo kroz listu naziva za brojeve do 20 i pronalazimo odgovarajuci naziv za uneti broj
                                 {
                                     if (int.Parse(n.Key.ToString()) == tempNumber)
                                     {
@@ -263,7 +225,7 @@ namespace Calculator
                             else                                                    //ukoliko je broj veci od 20
                             {
                                 double tempNumber = Math.Floor(number / 10);
-                                foreach (DictionaryEntry n in _dozens)               //prolazimo kroz listu naziva za desetine i pronalazimo odgovarajuci naziv za uneti broj
+                                foreach (DictionaryEntry n in _dozens.DozensList)               //prolazimo kroz listu naziva za desetine i pronalazimo odgovarajuci naziv za uneti broj
                                 {
                                     if (int.Parse(n.Key.ToString()) == tempNumber)
                                     {
@@ -272,7 +234,7 @@ namespace Calculator
                                     }
                                 }
                                 tempNumber = Math.Floor(number % 10);
-                                foreach (DictionaryEntry n in _upTo20)               //prolazimo kroz listu naziva za brojeve do 20 i pronalazimo odgovarajuci naziv za preostali broj
+                                foreach (DictionaryEntry n in _upTo20.UpTo20List)               //prolazimo kroz listu naziva za brojeve do 20 i pronalazimo odgovarajuci naziv za preostali broj
                                 {
                                     if (int.Parse(n.Key.ToString()) == tempNumber)
                                     {
