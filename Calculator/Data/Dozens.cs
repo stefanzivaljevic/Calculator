@@ -11,17 +11,18 @@ namespace Calculator.Models
 
         public Dozens()
         {
-            DozensList = new SortedList();
-
-            DozensList.Add(1, "deset");
-            DozensList.Add(2, "dvadeset");
-            DozensList.Add(3, "trideset");
-            DozensList.Add(4, "četrdeset");
-            DozensList.Add(5, "pedeset");
-            DozensList.Add(6, "šezdeset");
-            DozensList.Add(7, "sedamdeset");
-            DozensList.Add(8, "osamdeset");
-            DozensList.Add(9, "devedeset");
+            DozensList = new SortedList
+            {
+                { 1, "deset" },
+                { 2, "dvadeset" },
+                { 3, "trideset" },
+                { 4, "četrdeset" },
+                { 5, "pedeset" },
+                { 6, "šezdeset" },
+                { 7, "sedamdeset" },
+                { 8, "osamdeset" },
+                { 9, "devedeset" }
+            };
         }
     }
 }

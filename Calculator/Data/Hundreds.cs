@@ -11,17 +11,18 @@ namespace Calculator.Models
 
         public Hundreds()
         {
-            HundredsList = new SortedList();
-
-            HundredsList.Add(1, "sto");
-            HundredsList.Add(2, "dvesta");
-            HundredsList.Add(3, "trista");
-            HundredsList.Add(4, "četiristo");
-            HundredsList.Add(5, "petsto");
-            HundredsList.Add(6, "šeststo");
-            HundredsList.Add(7, "sedamsto");
-            HundredsList.Add(8, "osamsto");
-            HundredsList.Add(9, "devetsto");
+            HundredsList = new SortedList
+            {
+                { 1, "sto" },
+                { 2, "dvesta" },
+                { 3, "trista" },
+                { 4, "četiristo" },
+                { 5, "petsto" },
+                { 6, "šeststo" },
+                { 7, "sedamsto" },
+                { 8, "osamsto" },
+                { 9, "devetsto" }
+            };
         }
     }
 }
